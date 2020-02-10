@@ -2,8 +2,7 @@
 import React, {Component} from 'react';
 import {AppLoading} from "expo";
 import * as Font from 'expo-font';
-import {IonIcons} from "@expo/vector-icons";
-import {Text, View} from "react-native";
+import {Ionicons} from "@expo/vector-icons";
 import Tab_Nav from "./navigation/Tab_Nav";
 
 class App extends Component {
@@ -22,7 +21,7 @@ class App extends Component {
 
   loadAssets = async() => {
     await Font.loadAsync({
-      ...IonIcons.font
+      ...Ionicons.font
     });
   };
 
