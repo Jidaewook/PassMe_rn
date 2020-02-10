@@ -4,6 +4,7 @@ import {AppLoading} from "expo";
 import * as Font from 'expo-font';
 import {IonIcons} from "@expo/vector-icons";
 import {Text, View} from "react-native";
+import Tab_Nav from "./navigation/Tab_Nav";
 
 class App extends Component {
 
@@ -31,11 +32,7 @@ class App extends Component {
     const { loaded } = this.state;
 
     if (loaded) {
-      return (
-        <View>
-          <Text>Open up App.js~~~~</Text>
-        </View>
-      );
+      return <Tab_Nav />;
     } else {
       return (
         <AppLoading 
