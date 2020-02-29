@@ -26,7 +26,12 @@ class HomeContainer extends Component {
     render () {
         const { loading, totaldata } = this.state;
         console.log(totaldata);
-        return <HomePresenter loading={loading}/>;
+        return (
+            <HomePresenter 
+                loading={loading}
+                totaldata={totaldata}
+            />
+        );
     }
 }
 
