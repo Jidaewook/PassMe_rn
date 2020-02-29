@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {AppLoading} from "expo";
 import * as Font from 'expo-font';
 import {Ionicons} from "@expo/vector-icons";
-import Tab_Nav from "./navigation/Tab_Nav";
+import Main_Nav from './navigation/MainNavigation';
 
 class App extends Component {
 
@@ -31,7 +31,7 @@ class App extends Component {
     const { loaded } = this.state;
 
     if (loaded) {
-      return <Tab_Nav />;
+      return <Main_Nav />;
     } else {
       return (
         <AppLoading 

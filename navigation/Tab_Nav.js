@@ -2,6 +2,7 @@ import React from 'react';
 import {Platform} from "react-native";
 import {createAppContainer} from "react-navigation";
 import {createBottomTabNavigator} from "react-navigation-tabs";
+import {createStackNavigator} from "react-navigation-stack";
 
 import ActivityScreen from "../screens/Activity";
 import HomeScreen from "../screens/Home";
@@ -13,10 +14,12 @@ import {BG_COLOR, ACTIVE_COLOR} from "../constants/Color";
 
 import TabBarIcon from '../components/TabBarIcon';
 
+import { createdStack } from "./Config";
+
 const TabNavigation = createBottomTabNavigator (
     {
         Home: {
-            screen: HomeScreen,
+            screen: createdStack(HomeScreen, "HOME"),
             navigationOptions: {
                 tabBarIcon: ({focused}) => (
                     <TabBarIcon
@@ -27,7 +30,7 @@ const TabNavigation = createBottomTabNavigator (
             }
         },
         Search: {
-            screen: SearchScreen,
+            screen: createdStack(SearchScreen, "SEARCH"),
             navigationOptions: {
                 tabBarIcon: ({focused}) => (
                     <TabBarIcon
@@ -38,7 +41,7 @@ const TabNavigation = createBottomTabNavigator (
             }
         },
         Posting: {
-            screen: PostingScreen,
+            screen: createdStack(PostingScreen, "POSTING"),
             navigationOptions: {
                 tabBarIcon: ({focused}) => (
                     <TabBarIcon
@@ -49,7 +52,7 @@ const TabNavigation = createBottomTabNavigator (
             }
         },
         Activity: {
-            screen: ActivityScreen,
+            screen: createdStack(ActivityScreen, "ACTIVITY"),
             navigationOptions: {
                 tabBarIcon: ({focused}) => (
                     <TabBarIcon
@@ -60,7 +63,7 @@ const TabNavigation = createBottomTabNavigator (
             }
         },
         Mypage: {
-            screen: MypageScreen,
+            screen: createdStack(MypageScreen, "MYPAGE"),
             navigationOptions: {
                 tabBarIcon: ({ focused }) => (
                     <TabBarIcon
