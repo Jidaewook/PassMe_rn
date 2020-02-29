@@ -1,0 +1,42 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const Container = styled.View`
+    margin-vertical: 20px;
+
+`;
+
+const Title = styled.Text`
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 15px;
+    margin-bottom: 10px;
+`;
+
+const ScrollView = styled.ScrollView`
+    padding-left: 10px;
+`;
+
+const Section = ({title, child, horizontal=true}) =>(
+    <Container>
+        <Title>{title}</Title>
+        <ScrollView horizontal={horizontal}>
+            {child}
+        </ScrollView>
+    </Container>
+
+);
+
+Section.propTypes = {
+    child: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]),
+    horizontal: PropTypes.bool,
+    title: PropTypes.string.isRequired
+};
+
+export default Section;
