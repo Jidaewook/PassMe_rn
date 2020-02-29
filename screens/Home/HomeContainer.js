@@ -11,7 +11,7 @@ class HomeContainer extends Component {
 
     async componentDidMount(){
         try {
-            const totaldata = await bbsApi.Totalbbs();
+            ({data: {bbsInfo: totaldata}} = await bbsApi.Totalbbs());
 
             this.setState({totaldata: totaldata});
 
