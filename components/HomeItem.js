@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import bbsimg from './BbsImage';
+import Poster from './Poster';
 import {GREY_COLOR} from "../constants/Color";
+
+const Container = styled.View`
+    align-items: center;
+    margin-right: 20px;
+`;
 
 const HContainer = styled.View`
     margin-bottom: 20px;
@@ -23,27 +28,34 @@ const Title = styled.Text`
 const HomeItem = ({
     id,
     title,
-    bbsimg,
+    poster,
     likes,
     horizontal = false
 }) => (
     horizontal ? (
         <HContainer>
-            <bbsimg path={bbsimg}/>
+            <Poster path={poster}/>
+            <Column>
+                <Title big={true}>
+                    {title}
+                </Title>
+                
+            </Column>
         </HContainer>
     ) : (
-        <HContainer>
+        <Container>
+            <Poster path={poster} />
             <Title>
                 {title}
             </Title>
-        </HContainer>
+        </Container>
     )
 );
 
 HomeItem.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string.isRequired,
-    bbsimg: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
     likes: PropTypes.array
 };
 

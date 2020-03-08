@@ -32,11 +32,13 @@ class HomeContainer extends Component {
 
     render () {
         const { loading, totaldata, psat, ncs } = this.state;
-        console.log("ncs: ", ncs);
+        // console.log("ncs: ", ncs);
         return (
             <HomePresenter 
                 loading={loading}
                 totaldata={totaldata}
+                psat={psat}
+                ncs={ncs}
             />
         );
     }

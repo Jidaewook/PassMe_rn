@@ -11,13 +11,13 @@ const Image = styled.Image`
 `;
 
 
-const BbsImage = ({path}) => (
+const Poster = ({path}) => (
     <Image source={{ uri: makePhotoUrl(path)}} />  
 );
 
 
-BbsImage.propTypes = {
+Poster.propTypes = {
     path: PropTypes.string
 }
 
-export default BbsImage;
+export default Poster;

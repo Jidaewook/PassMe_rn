@@ -12,37 +12,56 @@ const Container = styled.ScrollView`
     background-color: ${BG_COLOR};
 `;
 
-const HomePresenter = ({loading, totaldata}) => 
+const HomePresenter = ({loading, totaldata, psat, ncs}) => 
     loading ? ( 
         <Loader /> 
     ) : (
         <Container>
-            { totaldata ? (
-                    <HomeSlider sliderData={totaldata} />
+            { totaldata ? (<HomeSlider sliderData={totaldata} />) : null  } 
+            { psat ? (
+                <Section title="PSAT 강좌">
+                    {psat 
+                        .filter(data => data.bbsimg !== null)
+                        .map(data => (
+                            <HomeItem
+                                key={data._id}
+                                id={data._id}
+                                title={data.title}
+                                poster={data.bbsimg}
 
-            ) : null  } 
-            { totaldata ? (
-                
-                    <Section title="인기 게시물">
-                        {totaldata
-                            .filter(data => data.bbsimg !== null)
-                            .map(data => (
-                                <HomeItem 
-                                    key={data._id}
-                                    title={data.title}
-                                    bbsimg={data.bbsimg}
-
-                                />
-                            )) 
+                            />
+                        ))
                         }
-                    </Section>
-            ) : null}
+                </Section>
+
+                )
+             : null}
+            {ncs ? (
+                <Section title="NCS 강좌" horizontal={false}>
+                    {ncs
+                        .filter(data => data.bbsimg !== null)
+                        .map(data => (
+                            <HomeItem
+                                key={data._id}
+                                id={data._id}
+                                title={data.title}
+                                poster={data.bbsimg}
+
+                            />
+                        ))
+                    }
+                </Section>
+
+            )
+                : null}
         </Container>
     );
 
 HomePresenter.propTypes = {
     loading: PropTypes.bool.isRequired,
-    totaldata: PropTypes.array
+    totaldata: PropTypes.array,
+    psat: PropTypes.array, 
+    ncs: PropTypes.array
 };
 
 export default HomePresenter;

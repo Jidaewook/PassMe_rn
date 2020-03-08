@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 
+
 const Container = styled.View`
     margin-vertical: 20px;
 
@@ -20,18 +21,18 @@ const ScrollView = styled.ScrollView`
     padding-left: 10px;
 `;
 
-const Section = ({title, child, horizontal=true}) =>(
+const Section = ({title, children, horizontal=true}) =>(
     <Container>
         <Title>{title}</Title>
         <ScrollView horizontal={horizontal}>
-            {child}
+            {children}
         </ScrollView>
     </Container>
 
 );
 
 Section.propTypes = {
-    child: PropTypes.oneOfType([
+    children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
     ]),
