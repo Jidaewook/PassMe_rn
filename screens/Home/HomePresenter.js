@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text, ScrollView} from "react-native";
 import PropTypes from "prop-types";
 import Loader from "../../components/Loader";
 import HomeSlider from "../../components/HomeSlider";
@@ -28,16 +27,17 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 id={data._id}
                                 title={data.title}
                                 poster={data.bbsimg}
+                                desc={data.desc}
+                                tag={data.tag}
 
                             />
                         ))
                         }
                 </Section>
+            ) : null }
 
-                )
-             : null}
-            {ncs ? (
-                <Section title="NCS 강좌" horizontal={false}>
+            { ncs ? (
+                <Section horizontal={false}title="NCS 강좌" >
                     {ncs
                         .filter(data => data.bbsimg !== null)
                         .map(data => (
@@ -46,14 +46,14 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 id={data._id}
                                 title={data.title}
                                 poster={data.bbsimg}
-
+                                tag={data.tag}
+                                desc={data.desc}
                             />
                         ))
                     }
                 </Section>
 
-            )
-                : null}
+            ) : null }
         </Container>
     );
 

@@ -10,19 +10,29 @@ const Container = styled.View`
 `;
 
 const HContainer = styled.View`
-    margin-bottom: 20px;
-    flex-direction: row;
+  margin-bottom: 20px;
+  flex-direction: row;
 `;
 
 const Column = styled.View`
-    margin-left: 20px;
-    width: 60%;
+  margin-left: 20px;
+  width: 60%;
 `;
 
 const Title = styled.Text`
     color: white;
-    font-size: 15px;
+    font-size: ${props => (!props.big ? "15px" : "17px")};
     margin-vertical: 5px;
+`;
+
+const Tag = styled.Text`
+
+`;
+
+const Overview = styled.Text`
+  color: ${GREY_COLOR};
+  font-size: 14px;
+  margin-vertical: 7px;
 `;
 
 const HomeItem = ({
@@ -30,15 +40,21 @@ const HomeItem = ({
     title,
     poster,
     likes,
-    horizontal = false
+    tag,
+    desc,
+    horizontal=false
 }) => (
     horizontal ? (
         <HContainer>
             <Poster path={poster}/>
             <Column>
-                <Title big={true}>
-                    {title}
-                </Title>
+                <Title big={true}>{title}</Title>
+                <Tag>{tag}</Tag>
+                {desc ? (
+                    <Overview>
+                        {desc.length > 150 ? `${desc.substring(0, 160)}...` : desc}
+                    </Overview>
+                 ) : null }
                 
             </Column>
         </HContainer>
@@ -46,8 +62,9 @@ const HomeItem = ({
         <Container>
             <Poster path={poster} />
             <Title>
-                {title}
+                {title.length > 15 ? `${title.substring(0, 12)}...` : title}
             </Title>
+            <Tag>{tag}</Tag>
         </Container>
     )
 );
@@ -56,7 +73,9 @@ HomeItem.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    likes: PropTypes.array
+    likes: PropTypes.array,
+    tag: PropTypes.array,
+    desc: PropTypes.string
 };
 
 export default HomeItem;
