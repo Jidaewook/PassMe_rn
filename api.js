@@ -5,6 +5,8 @@ const api = axios.create({
 
 })
 
-export const bbsApi ={
-    Totalbbs: () => api.get("/bbs/")
+export const mainApi ={
+    totalbbs: () => api.get("/bbs/"),
+    psat: () => api.get(`/bbs/category/psat`),
+    ncs: () => api.get(`/bbs/category/ncs`)
 }

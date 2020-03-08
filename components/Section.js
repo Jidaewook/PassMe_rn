@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ScrollView } from 'react-native-gesture-handler';
+
 
 const Container = styled.View`
     margin-vertical: 20px;
