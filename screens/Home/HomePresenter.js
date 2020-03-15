@@ -28,8 +28,9 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 title={data.title}
                                 poster={data.bbsimg}
                                 desc={data.desc}
-                                tag={data.tag}
-
+                                tag={data.tags}
+                                likes={data.likes}
+                                comments={data.comments}
                             />
                         ))
                         }
@@ -46,12 +47,15 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 id={data._id}
                                 title={data.title}
                                 poster={data.bbsimg}
-                                tag={data.tag}
+                                tag={data.tags}
                                 desc={data.desc}
+                                likes={data.likes}
+                                comments={data.comments}
                             />
                         ))
                     }
                 </Section>
+                
 
             ) : null }
         </Container>
