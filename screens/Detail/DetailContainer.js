@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DetailPresenter from './DetailPresenter';
-
+import {mainApi} from "../../api";
 
 
 
@@ -42,13 +42,53 @@ export default class DetailContainer extends Component {
             createdAt,
             updatedAt,
             likes,
-            tags
+            tags,
+            loading: true
+        }
+    }
+
+    // 라이프사이클 함수 실행
+    async componentDidMount() {
+        const {id} = this.state;
+        let error, 
+            title,
+            desc,
+            category,
+            bbsimg,
+            comments,
+            createdAt,
+            updatedAt,
+            likes,
+            tags;
+
+        try {
+            ({data: {
+                title, desc, category, bbsimg, comments, createdAt, updatedAt, likes, tags
+            }} = await mainApi.detail(id));
+
+        } catch {
+            console.log(error);
+        } finally {
+            this.setState({
+                loading: false,
+                title,
+                desc,
+                category,
+                bbsimg,
+                comments,
+                createdAt,
+                updatedAt,
+                likes,
+                tags
+
+            });
         }
     }
 
 
     render() {
         const {id, title, desc, category, bbsimg, comments, createdAt, updatedAt, likes, tags} = this.state;
+        console.log(this.state);
         return (
             <DetailPresenter 
                 id={id}

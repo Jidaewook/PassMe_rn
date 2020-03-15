@@ -8,7 +8,9 @@ const api = axios.create({
 export const mainApi ={
     totalbbs: () => api.get("/bbs/"),
     psat: () => api.get(`/bbs/category/psat`),
-    ncs: () => api.get(`/bbs/category/ncs`)
+    ncs: () => api.get(`/bbs/category/ncs`),
+    detail: id => api.get(`/detail/${id}`)
+
 }
 
 //MainPage get Detail Api(Latest, psat, ncs) 

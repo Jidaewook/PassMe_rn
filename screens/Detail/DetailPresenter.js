@@ -27,7 +27,10 @@ const Column = styled.View`
 `;
 
 const Title = styled.Text`
-
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
 `;
 
 const MainContent = styled.View`
@@ -38,6 +41,11 @@ const ContentTitle = styled.Text`
 `;
 
 const ContentValue = styled.Text`
+    color: white;
+    width: 90%;
+    font-size: 12px;
+    margin-bottom: 10px;
+
 `;
 
 const DataContainer = styled.View`
