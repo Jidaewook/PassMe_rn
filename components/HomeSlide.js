@@ -7,6 +7,8 @@ import Layout from "../constants/Layout";
 import Poster from "../components/Poster";
 import {ACTIVE_COLOR, BG_COLOR} from "../constants/Color";
 
+import {withNavigation} from "react-navigation";
+
 const Container = styled.View`
     flex: 1;
     position: relative;
@@ -66,12 +68,14 @@ const BtnText = styled.Text`
 
 
 const HomeSlide = ({
+    id,
     bbsimg,
     title,
     desc,
     tag,
     likes,
-    comments
+    comments,
+    navigation
 }) => (
     <Container>
         <BgImage source={{uri: makePhotoUrl(bbsimg)}} />
@@ -82,7 +86,14 @@ const HomeSlide = ({
                 {tag}
                 {desc ? (
                 <Overview>{desc.length > 117 ? `${desc.substring(0, 120)}...` : desc }</Overview> ): null}
-                <BtnContainer>
+                <BtnContainer
+                    onPress = {()=> 
+                        navigation.navigate({
+                            routeName: "Detail",
+                            params: {id}
+                        })
+                    }    
+                >
                     <BtnText>View Details</BtnText>
                 </BtnContainer>
             </Column>
@@ -113,4 +124,4 @@ HomeSlide.propTypes = {
     id: PropTypes.string
 };
 
-export default HomeSlide;
+export default withNavigation(HomeSlide);

@@ -86,7 +86,7 @@ const DetailPresenter = ({
 );
 
 DetailPresenter.propTypes ={
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     desc: PropTypes.string.isRequired,
     category: PropTypes.string,

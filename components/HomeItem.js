@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import Poster from './Poster';
 import {GREY_COLOR} from "../constants/Color";
 
+// 네비게이션에서 터치를 할 수 있게 하는 
+import {TouchableWithoutFeedback} from "react-native";
+import {withNavigation} from "react-navigation";
+
 const Container = styled.View`
     margin-right: 20px;
     ${'' /* //flrx-direction: 자식요소 정렬방향 */}
@@ -51,44 +55,50 @@ const HomeItem = ({
     tag,
     desc,
     comments,
+    navigation,
     horizontal=false
 }) => (
-    horizontal ? (
-        <HContainer>
-            <Poster path={poster}/>
-            <Column>
-                <Title big={true}>{title}</Title>
-                <Tag>{tag}</Tag>
-                {desc ? (
-                    <Overview>
-                        {desc.length > 150 ? `${desc.substring(0, 160)}...` : desc}
-                    </Overview>
-                 ) : null }
-                    {likes ? (<span>{likes.count}개의 좋아요.</span>) : null}    
-                
-            </Column>
-        </HContainer>
-    ) : (
-        <Container>
-            <Poster path={poster} />
-            <Column>
-                <Title>
-                    {title.length > 15 ? `${title.substring(0, 12)}...` : title}
-                </Title>
-                <Tag>{tag}</Tag>
-                {desc ? (
-                    <Overview>{desc.length > 117 ? `${desc.substring(0, 120)}...` : desc}</Overview>) : null}
-                        {/* node.js에서는 count, 프론트에서는 length로 개수 산정, 태그 앞에 span을 두고 하트를 넣어주면 된다. */}
-                        <Tag>
-                            <Image role="img" aria-label="rating">⭐️</Image>
-                            {" "} {likes.length} {"  "}
-                            <Image role="img" aria-label="rating">⭐️</Image>
-                            {" "} {comments.length}
-                        </Tag>
-                
-            </Column>
-        </Container>
-    )
+    <TouchableWithoutFeedback
+        onPress={() => 
+            navigation.navigate({routeName: "Detail", params: {id}})
+        }
+    >
+        {horizontal ? (
+            <HContainer>
+                <Poster path={poster} />
+                <Column>
+                    <Title big={true}>{title}</Title>
+                    <Tag>{tag}</Tag>
+                    {desc ? (
+                        <Overview>
+                            {desc.length > 150 ? `${desc.substring(0, 160)}...` : desc}
+                        </Overview>
+                    ) : null}
+                    {likes ? (<span>{likes.count}개의 좋아요.</span>) : null}
+                </Column>
+            </HContainer>
+        ) : (
+            <Container>
+                <Poster path={poster} />
+                <Column>
+                    <Title>
+                        {title.length > 15 ? `${title.substring(0, 12)}...` : title}
+                    </Title>
+                    <Tag>{tag}</Tag>
+                    {desc ? (
+                        <Overview>{desc.length > 117 ? `${desc.substring(0, 120)}...` : desc}</Overview>) : null}
+                    {/* node.js에서는 count, 프론트에서는 length로 개수 산정, 태그 앞에 span을 두고 하트를 넣어주면 된다. */}
+                    <Tag>
+                        <Image role="img" aria-label="rating">⭐️</Image>
+                        {" "} {likes.length} {"  "}
+                        <Image role="img" aria-label="rating">⭐️</Image>
+                        {" "} {comments.length}
+                    </Tag>
+                </Column>
+            </Container>
+        )}
+    </TouchableWithoutFeedback>
+    
 );
 
 HomeItem.propTypes = {
@@ -101,4 +111,4 @@ HomeItem.propTypes = {
     comments: PropTypes.array
 };
 
-export default HomeItem;
+export default withNavigation(HomeItem);
