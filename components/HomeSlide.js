@@ -90,7 +90,14 @@ const HomeSlide = ({
                     onPress = {()=> 
                         navigation.navigate({
                             routeName: "Detail",
-                            params: {id}
+                            params: {
+                                id, 
+                                bbsimg,
+                                title,
+                                desc,
+                                tag,
+                                likes,
+                                comments}
                         })
                     }    
                 >

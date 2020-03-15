@@ -60,7 +60,15 @@ const HomeItem = ({
 }) => (
     <TouchableWithoutFeedback
         onPress={() => 
-            navigation.navigate({routeName: "Detail", params: {id}})
+                navigation.navigate({
+                    routeName: "Detail", params: {
+                        id, 
+                        title, 
+                        poster,
+                        likes,
+                        tag,
+                        desc,
+                        comments}})
         }
     >
         {horizontal ? (

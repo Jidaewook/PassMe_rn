@@ -19,7 +19,7 @@ const BgImage = styled.Image`
 
 `;
 
-const Content = styeld.View`
+const Content = styled.View`
 
 `;
 
@@ -33,14 +33,14 @@ const Title = styled.Text`
 const MainContent = styled.View`
 `;
 
-const ContentTitle = styeld.Text`
+const ContentTitle = styled.Text`
 
 `;
 
 const ContentValue = styled.Text`
 `;
 
-const DataContainer = styeld.View`
+const DataContainer = styled.View`
 `;
 
 const Genres = styled.Text`
@@ -63,7 +63,17 @@ const DetailPresenter = ({
     <Container>
         <Header>
             <BgImage />
-            <LinearGradient>
+            <LinearGradient 
+                colors={["transparent", "black"]}
+                start={Platform.select({
+                    ios: [0, 0]
+                })}
+                end={Platform.select({
+                    ios: [0, 0.5],
+                    android: [0, 0.9]
+                })}
+                
+            >
                 <Content>
                     <Poster />
                     <Column>
