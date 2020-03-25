@@ -26,7 +26,9 @@ export default class DetailContainer extends Component {
                         createdAt,
                         updatedAt,
                         likes,
-                        tags}
+                        tags
+                    }
+
                 }
             }
         } = props;
@@ -62,15 +64,11 @@ export default class DetailContainer extends Component {
             tags;
 
         try {
-            ({data: {
-                title, desc, category, bbsimg, comments, createdAt, updatedAt, likes, tags
+            ({bbsInfo: {
+                id, title, desc, category, bbsimg, comments, createdAt, updatedAt, likes, taps
             }} = await mainApi.detail(id));
-
-        } catch {
-            console.log(error);
-        } finally {
             this.setState({
-                loading: false,
+                id,
                 title,
                 desc,
                 category,
@@ -80,6 +78,13 @@ export default class DetailContainer extends Component {
                 updatedAt,
                 likes,
                 tags
+            })
+
+        } catch {
+            console.log({error: "Can't get Data-Detail"});
+        } finally {
+            this.setState({
+                loading: false
 
             });
         }
@@ -87,21 +92,35 @@ export default class DetailContainer extends Component {
 
 
     render() {
-        const {id, title, desc, category, bbsimg, comments, createdAt, updatedAt, likes, tags} = this.state;
-        console.log(this.state);
+        const {
+            id,
+            title, 
+            desc,
+            category,
+            bbsimg,
+            comments,
+            createdAt,
+            updatedAt,
+            likes,
+            tags
+        } = this.state;
+        console.log("title ", title);
+        console.log("desc ", desc);
+        console.log("category", category);
+        console.log("bbsimg ", bbsimg );
+        console.log("comments", comments);
+        console.log("createdAt", createdAt);
+        console.log("updatedAt", updatedAt);
+        console.log("likes", likes);
+        console.log("tags", tags);
+        
+
+
         return (
             <DetailPresenter 
                 id={id}
                 title={title}
                 desc={desc}
-                category={category}
-                bbsimg={bbsimg}
-                comments={comments}
-                createdAt={createdAt}
-                updatedAt={updatedAt}
-                likes={likes}
-                tags={tags}
-
 
             />
 

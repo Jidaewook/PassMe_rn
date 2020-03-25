@@ -10,7 +10,7 @@ import {withNavigation} from "react-navigation";
 
 const Container = styled.View`
     margin-right: 20px;
-    ${'' /* //flrx-direction: 자식요소 정렬방향 */}
+    ${'' /* //flex-direction: 자식요소 정렬방향 */}
     flex-direction: row;
 
 `;
@@ -45,6 +45,8 @@ const Overview = styled.Text`
   color: ${GREY_COLOR};
   font-size: 14px;
   margin-vertical: 7px;
+  ${'' /* 100%를 적용해도 너무 길다 */}
+  width: 100%;
 `;
 
 const HomeItem = ({
@@ -56,6 +58,8 @@ const HomeItem = ({
     desc,
     comments,
     navigation,
+    // horizontal이 여기서 확정되어 버리는데, psat은 true, ncs는 false가 되게 하려면 어케 해야 하나
+    // homeitem에서 부여해서 설정은 됨. 그런데 가로폭이 화면을 넘어버릴 정도로 길다.
     horizontal=false
 }) => (
     <TouchableWithoutFeedback
@@ -79,10 +83,10 @@ const HomeItem = ({
                     <Tag>{tag}</Tag>
                     {desc ? (
                         <Overview>
-                            {desc.length > 150 ? `${desc.substring(0, 160)}...` : desc}
+                            {desc.length > 30 ? `${desc.substring(0, 29)}...` : desc}
                         </Overview>
                     ) : null}
-                    {likes ? (<span>{likes.count}개의 좋아요.</span>) : null}
+                    
                 </Column>
             </HContainer>
         ) : (

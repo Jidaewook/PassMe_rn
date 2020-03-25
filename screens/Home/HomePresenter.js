@@ -31,6 +31,7 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 tag={data.tags}
                                 likes={data.likes}
                                 comments={data.comments}
+                                horizontal={true}
                             />
                         ))
                         }
@@ -51,6 +52,7 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 desc={data.desc}
                                 likes={data.likes}
                                 comments={data.comments}
+                                horizontal={false}
                             />
                         ))
                     }

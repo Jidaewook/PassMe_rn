@@ -37,7 +37,7 @@ const MainContent = styled.View`
 `;
 
 const ContentTitle = styled.Text`
-
+    color: white;
 `;
 
 const ContentValue = styled.Text`
