@@ -3,10 +3,13 @@ import {Platform} from 'react-native';
 import PropTypes from 'prop-types';
 import {LinearGradient} from "expo-linear-gradient";
 import Poster from  "../../components/Poster";
+import Rating from "../../components/Rating";
 
 import styled from 'styled-components';
 import { BG_COLOR } from '../../constants/Color';
 import Layout from '../../constants/Layout';
+import makePhotoUrl from '../../utils/makePhotoUrl';
+
 
 const Container = styled.ScrollView`
     background-color: ${BG_COLOR}
@@ -24,7 +27,7 @@ const BgImage = styled.Image`
 `;
 
 const Content = styled.View`
-
+    margin-top: ${(Layout.height/3.5)+10};
 `;
 
 const Column = styled.View`
@@ -74,8 +77,8 @@ const DetailPresenter = ({
 }) => (
     <Container>
         <Header>
-            <BgImage source={{}} />
-            <LinearGradient 
+                <BgImage source={{ uri: makePhotoUrl(bbsimg)}} />
+            {/* <LinearGradient 
                 colors={["transparent", "black"]}
                 start={Platform.select({
                     ios: [0, 0]
@@ -85,22 +88,34 @@ const DetailPresenter = ({
                     android: [0, 0.9]
                 })}
                 
-            >
+            > */}
+
                 <Content>
-                    <Poster />
+                    {/* <Poster path={{uri: makePhotoUrl(bbsimg)}}/> */}
                     <Column>
-                        <Title>{title}</Title>
+                        <Title>#123 #333 #555</Title>
+                        {/* <Title>{tags.map((tag, index) => 
+                            `# ${tag.name}`
+                        )}</Title> */}
                         
                         
                     </Column>
                 </Content>
-            </LinearGradient>
+            {/* </LinearGradient> */}
             <MainContent>
                 {/* 기획안에 따라서 데이터컨테이너/콘텐트타이틀/컨텐트뷰가 계속 돌면서 설명항목 반복 */}
                 <DataContainer>
                     <ContentTitle>강좌설명</ContentTitle>
                     <ContentValue>{desc}</ContentValue>
                 </DataContainer>
+                <Rating 
+                // 여기서 진행 안됨. 에러 중.
+                    likes={likes.length}
+                    comments={comments.length}
+
+                />
+
+                
             </MainContent>
             
         </Header>

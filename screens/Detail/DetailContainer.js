@@ -106,6 +106,8 @@ export default class DetailContainer extends Component {
         } = this.state;
 
         console.log("id", id);
+        console.log("title", title);
+        console.log("desc", desc);
         console.log("category", category);
         console.log("bbsimg ", bbsimg );
         console.log("comments", comments);
