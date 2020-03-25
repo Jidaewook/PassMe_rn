@@ -65,7 +65,7 @@ export default class DetailContainer extends Component {
 
         try {
             ({bbsInfo: {
-                id, title, desc, category, bbsimg, comments, createdAt, updatedAt, likes, taps
+                id, title, desc, category: category, bbsimg: bbsimg, comments, createdAt, updatedAt, likes, taps
             }} = await mainApi.detail(id));
             this.setState({
                 id,
@@ -104,8 +104,8 @@ export default class DetailContainer extends Component {
             likes,
             tags
         } = this.state;
-        console.log("title ", title);
-        console.log("desc ", desc);
+
+        console.log("id", id);
         console.log("category", category);
         console.log("bbsimg ", bbsimg );
         console.log("comments", comments);
@@ -121,7 +121,13 @@ export default class DetailContainer extends Component {
                 id={id}
                 title={title}
                 desc={desc}
-
+                category={category}
+                bbsimg={bbsimg}
+                likes={likes}
+                comments={comments}
+                createdAt={createdAt}
+                updatedAt={updatedAt}
+                tags={tags}
             />
 
 

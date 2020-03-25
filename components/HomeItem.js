@@ -3,16 +3,23 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Poster from './Poster';
 import {GREY_COLOR} from "../constants/Color";
+import Rating from './Rating';
 
 // 네비게이션에서 터치를 할 수 있게 하는 
 import {TouchableWithoutFeedback} from "react-native";
 import {withNavigation} from "react-navigation";
 
 const Container = styled.View`
+    align-items: center;
     margin-right: 20px;
     ${'' /* //flex-direction: 자식요소 정렬방향 */}
-    flex-direction: row;
+    ${'' /* flex-direction: row; */}
+`;
 
+const Title = styled.Text`
+    color: white;
+    font-size: ${props => (!props.big ? "15px" : "17px")};
+    margin-vertical: 5px;
 `;
 
 const HContainer = styled.View`
@@ -25,20 +32,16 @@ const Column = styled.View`
   width: 60%;
 `;
 
-const Title = styled.Text`
-    color: white;
-    font-size: ${props => (!props.big ? "15px" : "17px")};
-    margin-vertical: 5px;
-`;
+
 
 const Tag = styled.Text`
    color: white;
     
 `;
 
-const Image = styled.Text`
-    color: white;
-`;
+// const Image = styled.Text`
+//     color: white;
+// `;
 
 
 const Overview = styled.Text`
@@ -46,7 +49,7 @@ const Overview = styled.Text`
   font-size: 14px;
   margin-vertical: 7px;
   ${'' /* 100%를 적용해도 너무 길다 */}
-  width: 100%;
+  ${'' /* width: 100%; */}
 `;
 
 const HomeItem = ({
@@ -81,6 +84,12 @@ const HomeItem = ({
                 <Column>
                     <Title big={true}>{title}</Title>
                     <Tag>{tag}</Tag>
+                    <Rating 
+                        likes={likes.length}
+                        comments={comments.length}
+                        inSlide={true}
+                        
+                    />
                     {desc ? (
                         <Overview>
                             {desc.length > 30 ? `${desc.substring(0, 29)}...` : desc}
@@ -92,21 +101,25 @@ const HomeItem = ({
         ) : (
             <Container>
                 <Poster path={poster} />
-                <Column>
-                    <Title>
-                        {title.length > 15 ? `${title.substring(0, 12)}...` : title}
-                    </Title>
-                    <Tag>{tag}</Tag>
-                    {desc ? (
-                        <Overview>{desc.length > 117 ? `${desc.substring(0, 120)}...` : desc}</Overview>) : null}
-                    {/* node.js에서는 count, 프론트에서는 length로 개수 산정, 태그 앞에 span을 두고 하트를 넣어주면 된다. */}
-                    <Tag>
-                        <Image role="img" aria-label="rating">⭐️</Image>
-                        {" "} {likes.length} {"  "}
-                        <Image role="img" aria-label="rating">⭐️</Image>
-                        {" "} {comments.length}
-                    </Tag>
-                </Column>
+                
+                <Title>
+                    {title.length > 10 ? `${title.substring(0, 8)}...` : title}
+                </Title>
+                <Tag>{tag}</Tag>
+                <Rating 
+                    likes={likes.length}
+                    comments={comments.length}
+                    
+                />
+                {/* {desc ? (
+                    <Overview>{desc.length > 117 ? `${desc.substring(0, 120)}...` : desc}</Overview>) : null}
+                node.js에서는 count, 프론트에서는 length로 개수 산정, 태그 앞에 span을 두고 하트를 넣어주면 된다. */}
+                <Tag>
+                    {/* <span role="img" aria-label="rating">⭐️</span>
+                    {" "} {likes.length} {"  "}
+                    <span role="img" aria-label="rating">⭐️</span>
+                    {" "} {comments.length} */}
+                </Tag>               
             </Container>
         )}
     </TouchableWithoutFeedback>

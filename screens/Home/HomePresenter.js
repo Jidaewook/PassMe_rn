@@ -31,7 +31,7 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 tag={data.tags}
                                 likes={data.likes}
                                 comments={data.comments}
-                                horizontal={true}
+                                // horizontal={false}
                             />
                         ))
                         }
@@ -39,7 +39,7 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
             ) : null }
 
             { ncs ? (
-                <Section horizontal={false}title="NCS 강좌" >
+                <Section horizontal={false} title="NCS 강좌" >
                     {ncs
                         .filter(data => data.bbsimg !== null)
                         .map(data => (
@@ -52,7 +52,7 @@ const HomePresenter = ({loading, totaldata, psat, ncs}) =>
                                 desc={data.desc}
                                 likes={data.likes}
                                 comments={data.comments}
-                                horizontal={false}
+                                horizontal={true}
                             />
                         ))
                     }

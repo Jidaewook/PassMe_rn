@@ -6,6 +6,7 @@ import Poster from  "../../components/Poster";
 
 import styled from 'styled-components';
 import { BG_COLOR } from '../../constants/Color';
+import Layout from '../../constants/Layout';
 
 const Container = styled.ScrollView`
     background-color: ${BG_COLOR}
@@ -16,7 +17,10 @@ const Header = styled.View`
 `;
 
 const BgImage = styled.Image`
-
+    width: ${Layout.width};
+    height: ${Layout.height/3.5};
+    position: absolute;
+    top: 0;
 `;
 
 const Content = styled.View`
@@ -70,7 +74,7 @@ const DetailPresenter = ({
 }) => (
     <Container>
         <Header>
-            <BgImage />
+            <BgImage source={{}} />
             <LinearGradient 
                 colors={["transparent", "black"]}
                 start={Platform.select({

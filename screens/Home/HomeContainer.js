@@ -15,7 +15,7 @@ class HomeContainer extends Component {
 
     async componentDidMount(){
         try {
-            ({data: {bbsInfo: totaldata}} = await mainApi.totalbbs());
+            ({ data: { bbsInfo: totaldata}} = await mainApi.totalbbs());
             ({ data: { cateInfo: psat}} = await mainApi.psat());
             ({ data: { cateInfo: ncs}} = await mainApi.ncs());
 
